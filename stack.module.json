@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "searxng",
+  "repo": "searxng-stack-module",
+  "runtimeId": "searxng",
+  "lifecycle": "active",
+  "dependencies": [
+    "stack-foundation"
+  ],
+  "runtimeDependencies": [
+    "stack-foundation"
+  ],
+  "contracts": [
+    "module-contract"
+  ],
+  "smoke": "external-only",
+  "smokeUnsupportedReason": "requires generated bundle context, deployed networking, secrets, or service dependencies",
+  "overlays": [
+    "stack.config/components.json",
+    "stack.config/service-contracts.json",
+    "stack.config/searxng/settings.yml",
+    "stack.runtime.yaml"
+  ],
+  "testAssets": []
+}

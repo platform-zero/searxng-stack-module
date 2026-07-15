@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "defaultComponents": [],
+  "components": {
+    "searxng": {
+      "name": "SearXNG",
+      "description": "Private metasearch UI and JSON search API.",
+      "dependencies": [
+        "core"
+      ],
+      "runtimeFiles": [
+        "searxng.yml"
+      ]
+    }
+  }
+}

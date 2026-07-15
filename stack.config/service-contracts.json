@@ -1,0 +1,86 @@
+{
+  "contractVersion": 1,
+  "components": {
+    "searxng": {
+      "name": "SearXNG",
+      "description": "Private metasearch UI and JSON search API.",
+      "moduleType": "service",
+      "primaryHost": "websearch",
+      "routes": [
+        {
+          "host": "websearch",
+          "auth": "forward_auth",
+          "ui": true,
+          "audience": "employee",
+          "rbacEnforcement": "edge_group_allow"
+        }
+      ],
+      "auth": {
+        "mode": "forward_auth"
+      },
+      "rbac": {
+        "groups": [
+          "admins",
+          "operators",
+          "agents"
+        ]
+      },
+      "state": {
+        "mode": "volumes",
+        "stores": [
+          "searxng_cache"
+        ]
+      },
+      "backup": {
+        "policy": "kopia",
+        "targets": [
+          "searxng_cache"
+        ]
+      },
+      "restore": {
+        "drills": [
+          "search-home",
+          "json-query"
+        ]
+      },
+      "observability": {
+        "health": true,
+        "logs": true,
+        "metrics": false
+      },
+      "evidence": {
+        "expectations": [
+          "searxng.home",
+          "searxng.json_query"
+        ]
+      },
+      "screenshots": [
+        "searxng/home"
+      ],
+      "portal": {
+        "visible": true,
+        "hrefHost": "websearch",
+        "category": "Knowledge",
+        "profiles": [
+          "operator",
+          "developer"
+        ],
+        "description": "Private metasearch across public search providers.",
+        "audience": "employee"
+      },
+      "slo": {
+        "availability": "98.0%",
+        "latencyMs": 4000
+      },
+      "access": {
+        "offboarding": "keycloak_group_removal",
+        "owner": "knowledge"
+      },
+      "artifacts": {
+        "json": [
+          "reports/searxng.json"
+        ]
+      }
+    }
+  }
+}
