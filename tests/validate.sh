@@ -13,7 +13,7 @@ fi
 [ -n "$validator" ] || { printf '[module-contract] set WEBSERVICES_MODULE_CONTRACT_VALIDATOR or keep sso-stack-generator next to modules workspace\n' >&2; exit 1; }
 "$validator" validate "$repo_root"
 settings="$repo_root/stack.config/searxng/settings.yml.template"
-grep -Fq "secret_key: \"\${SEARXNG_SECRET}\"" "$settings"
-grep -Fq "base_url: \"https://websearch.\${DOMAIN}/\"" "$settings"
+grep -Fq "secret_key: \"{{SEARXNG_SECRET}}\"" "$settings"
+grep -Fq "base_url: \"https://websearch.{{DOMAIN}}/\"" "$settings"
 grep -Fq -- '- html' "$settings"
 grep -Fq -- '- json' "$settings"

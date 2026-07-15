@@ -12,12 +12,12 @@ search:
   - json
 
 server:
-  secret_key: "${SEARXNG_SECRET}"
+  secret_key: "{{SEARXNG_SECRET}}"
   limiter: false
   image_proxy: true
   bind_address: "0.0.0.0"
   port: 8080
-  base_url: "https://websearch.${DOMAIN}/"
+  base_url: "https://websearch.{{DOMAIN}}/"
 
 ui:
   static_use_hash: true
